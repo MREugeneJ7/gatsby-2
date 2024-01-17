@@ -6,5 +6,18 @@ module.exports = {
     title: `Componente versiones`,
     siteUrl: `https://www.yourdomain.tld`,
   },
-  plugins: [],
+  plugins: [
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/src/data/`,
+        // Ignore files starting with a dot
+        ignore: [`**/\.*`],
+        // Use "mtime" and "inode" to fingerprint files (to check if file has changed)
+        fastHash: true,
+      },
+    },
+  ],
 }
