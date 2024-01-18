@@ -1,0 +1,54 @@
+{"edificios" :[{
+    "nombre": "Mi casa",
+    "imagen": "https://i.blogs.es/c68014/casa-3d/840_560.jpeg",
+    "antecedentes": "Antes vivia en una madriguera",
+    "arquitectura": "rocambolesca",
+    "epoca": "espacial",
+    "coordenadas": {
+        "lat": "aqui",
+        "long": "aca"
+    },
+    "reviews": [
+        {
+            "title": "Guapisimo loco",
+            "author": "se kinkaso to posse",
+            "text": "10/10 niño top top"
+        }
+    ]
+},
+{
+    "nombre": "Mi casa 2",
+    "imagen": "https://i.blogs.es/c68014/casa-3d/840_560.jpeg",
+    "antecedentes": "Antes vivia en una madriguera",
+    "arquitectura": "rocambolesca",
+    "epoca": "espacial",
+    "coordenadas": {
+        "lat": "aqui",
+        "long": "aca"
+    },
+    "reviews": [
+        {
+            "title": "Guapisimo loco",
+            "author": "se kinkaso to posse",
+            "text": "10/10 niño top top"
+        }
+    ]
+},
+{
+    "nombre": "Mi casa 3",
+    "imagen": "https://i.blogs.es/c68014/casa-3d/840_560.jpeg",
+    "antecedentes": "Antes vivia en una madriguera",
+    "arquitectura": "rocambolesca",
+    "epoca": "espacial",
+    "coordenadas": {
+        "lat": "aqui",
+        "long": "aca"
+    },
+    "reviews": [
+        {
+            "title": "Guapisimo loco",
+            "author": "se kinkaso to posse",
+            "text": "10/10 niño top top"
+        }
+    ]
+}]}

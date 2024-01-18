@@ -19,6 +19,7 @@
     "gatsby-source-apiserver": "^2.1.8",
     "gatsby-source-filesystem": "^5.13.0",
     "gatsby-transformer-json": "^5.13.0",
+    "json-server": "^1.0.0-alpha.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }

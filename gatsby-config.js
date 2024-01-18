@@ -19,5 +19,14 @@ module.exports = {
         fastHash: true,
       },
     },
+    {
+      resolve: 'gatsby-source-apiserver',
+      options: {
+        typePrefix: "api",
+        url: `http://localhost:3000/edificios`,
+        name: "edificios",
+        entityLevel: false
+        },
+    },
   ],
 }

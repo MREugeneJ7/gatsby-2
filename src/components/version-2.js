@@ -1,84 +1,59 @@
 import * as React from "react"
+import { graphql, useStaticQuery } from 'gatsby'
 
-let edificios = [{
-    nombre: "Mi casa",
-    imagen: "https://i.blogs.es/c68014/casa-3d/840_560.jpeg",
-    antecedentes: "Antes vivia en una madriguera",
-    arquitectura: "rocambolesca",
-    epoca: "espacial",
-    coordenadas: {
-        lat: "aqui",
-        long: "aca"
-    },
-    reviews: [
-        {
-            title: "Guapisimo loco",
-            author: "se kinkaso to posse",
-            text: "10/10 niño top top"
-        },
-    ]
-},
-{
-    nombre: "Mi casa 2",
-    imagen: "https://i.blogs.es/c68014/casa-3d/840_560.jpeg",
-    antecedentes: "Antes vivia en una madriguera",
-    arquitectura: "rocambolesca",
-    epoca: "espacial",
-    coordenadas: {
-        lat: "aqui",
-        long: "aca"
-    },
-    reviews: [
-        {
-            title: "Guapisimo loco",
-            author: "se kinkaso to posse",
-            text: "10/10 niño top top"
-        },
-    ]
-},
-{
-    nombre: "Mi casa 3",
-    imagen: "https://i.blogs.es/c68014/casa-3d/840_560.jpeg",
-    antecedentes: "Antes vivia en una madriguera",
-    arquitectura: "rocambolesca",
-    epoca: "espacial",
-    coordenadas: {
-        lat: "aqui",
-        long: "aca"
-    },
-    reviews: [
-        {
-            title: "Guapisimo loco",
-            author: "se kinkaso to posse",
-            text: "10/10 niño top top"
-        },
-    ]
-}]
 
 const BuildingComponentImproved = () => {
     const [index, setIndex] = React.useState(0);
     const [showReviews, setShowReviews] = React.useState(false);
 
     function showPrevious() {
-        if(index === 0) setIndex(edificios.length - 1)
+        if(index === 0) setIndex(data.allApiedificios.edges.length - 1)
         else setIndex(index - 1)
     }
 
     function showNext() {
-        if(index === edificios.length - 1) setIndex(0)
+        if(index === data.allApiedificios.edges.length - 1) setIndex(0)
         else setIndex(index + 1)
     }
 
+    let data = useStaticQuery(graphql`
+    query MyQuery {
+        allApiedificios {
+          edges {
+            node {
+              antecedentes
+              arquitectura
+              epoca
+              coordenadas {
+                lat
+                long
+              }
+              id
+              imagen
+              nombre
+              reviews {
+                author
+                text
+                title
+              }
+            }
+          }
+        }
+      }
+`
+    )
+
+
     return (
         <div>
-            <h2>{edificios[index].nombre}</h2>
-            <img src={edificios[index].imagen} alt="Una foto"/>
-            <p>Antecedentes: {edificios[index].antecedentes}</p>
-            <p> Es una construcción con arquitectura {edificios[index].arquitectura} construido en el periodo {edificios[index].epoca}</p>
-            <p>Esta situado en las coordenadas {edificios[index].coordenadas.lat}, {edificios[index].coordenadas.long}</p>
+            <h2>{data.allApidata.allApiedificios.edges[index].node.nombre}</h2>
+            <img src={data.allApidata.allApiedificios.edges[index].node.imagen} alt="Una foto"/>
+            <p>Antecedentes: {data.allApidata.allApiedificios.edges[index].node.antecedentes}</p>
+            <p> Es una construcción con arquitectura {data.allApidata.allApiedificios.edges[index].node.arquitectura} construido en el periodo {data.allApidata.allApiedificios.edges[index].node.epoca}</p>
+            <p>Esta situado en las coordenadas {data.allApidata.allApiedificios.edges[index].node.coordenadas.lat}, {data.allApidata.allApiedificios.edges[index].node.coordenadas.long}</p>
             <button onClick={() => setShowReviews(!showReviews)}>{!showReviews ? 'Ver Reviews' : 'Ocultar Reviews'}</button>
             {showReviews && (
-                edificios[index].reviews.map((review, index) => (
+                data.allApidata.allApiedificios.edges.edges[index].node.reviews.map((review, index) => (
                     <div key={index}>
                         <h4>
                             {review.title}
