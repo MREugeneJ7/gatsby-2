@@ -1,8 +1,8 @@
 import * as React from "react"
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql } from 'gatsby'
 
 
-const BuildingComponentImproved = () => {
+const BuildingComponentImproved = async () => {
     const [index, setIndex] = React.useState(0);
     const [showReviews, setShowReviews] = React.useState(false);
 
@@ -16,19 +16,18 @@ const BuildingComponentImproved = () => {
         else setIndex(index + 1)
     }
 
-    let data = useStaticQuery(graphql`
+    let data = await graphql`
     query MyQuery {
         allApiedificios {
           edges {
             node {
               antecedentes
               arquitectura
-              epoca
               coordenadas {
                 lat
                 long
               }
-              id
+              epoca
               imagen
               nombre
               reviews {
@@ -41,19 +40,19 @@ const BuildingComponentImproved = () => {
         }
       }
 `
-    )
+    
 
 
     return (
         <div>
-            <h2>{data.allApidata.allApiedificios.edges[index].node.nombre}</h2>
-            <img src={data.allApidata.allApiedificios.edges[index].node.imagen} alt="Una foto"/>
-            <p>Antecedentes: {data.allApidata.allApiedificios.edges[index].node.antecedentes}</p>
-            <p> Es una construcción con arquitectura {data.allApidata.allApiedificios.edges[index].node.arquitectura} construido en el periodo {data.allApidata.allApiedificios.edges[index].node.epoca}</p>
-            <p>Esta situado en las coordenadas {data.allApidata.allApiedificios.edges[index].node.coordenadas.lat}, {data.allApidata.allApiedificios.edges[index].node.coordenadas.long}</p>
+            <h2>{data.allApiedificios.edges[index].node.nombre}</h2>
+            <img src={data.allApiedificios.edges[index].node.imagen} alt="Una foto"/>
+            <p>Antecedentes: {data.allApiedificios.edges[index].node.antecedentes}</p>
+            <p> Es una construcción con arquitectura {data.allApiedificios.edges[index].node.arquitectura} construido en el periodo {data.allApiedificios.edges[index].node.epoca}</p>
+            <p>Esta situado en las coordenadas {data.allApiedificios.edges[index].node.coordenadas.lat}, {data.allApiedificios.edges[index].node.coordenadas.long}</p>
             <button onClick={() => setShowReviews(!showReviews)}>{!showReviews ? 'Ver Reviews' : 'Ocultar Reviews'}</button>
             {showReviews && (
-                data.allApidata.allApiedificios.edges.edges[index].node.reviews.map((review, index) => (
+                data.allApiedificios.edges.edges[index].node.reviews.map((review, index) => (
                     <div key={index}>
                         <h4>
                             {review.title}
