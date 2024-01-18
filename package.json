@@ -15,7 +15,9 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "eslint-plugin-jsx-a11y": "^6.8.0",
     "gatsby": "^5.13.1",
+    "gatsby-plugin-eslint": "^4.0.4",
     "gatsby-source-apiserver": "^2.1.8",
     "gatsby-source-filesystem": "^5.13.0",
     "gatsby-transformer-json": "^5.13.0",
